@@ -81,7 +81,7 @@ for obj in $selection do
 
  )
  
-      macroScript resetXfrn category:"TurboSquid" toolTip:"Collapse to first modifier" buttontext:"Collapse to first"
+      macroScript collapseToFirst category:"TurboSquid" toolTip:"Collapse to first modifier" buttontext:"Collapse to first"
 ( 
 	--GET THE INSTANCED MODIFIER
 	iMod = modPanel.getCurrentObject()
