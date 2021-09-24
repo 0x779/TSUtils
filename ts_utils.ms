@@ -80,8 +80,36 @@ for obj in $selection do
 	collapsestack selection
 
  )
+ 
+      macroScript resetXfrn category:"TurboSquid" toolTip:"Collapse to first modifier" buttontext:"Collapse to first"
+( 
+	--GET THE INSTANCED MODIFIER
+	iMod = modPanel.getCurrentObject()
+	
+    for obj in selection do
+    (
+        for i in obj.modifiers.count to 1 by -1 where
+            obj.modifiers[i] == iMod do
+            (
+                maxops.CollapseNodeTo obj i off
+                exit
+            )
+    )
 
-
-
-
-
+ )
+ 
+      macroScript vrayMatConv category:"TurboSquid" toolTip:"Convert V-Ray Materials" buttontext:"V-Ray"
+( 	
+ for i = 1 to scenematerials.count do
+	(
+		mat_name = scenematerials[i].name
+		mat_class = scenematerials[i].class
+		mats = for o in objects where o.material == scenematerials[i] collect oo
+		format("Material name:\n" + mat_name + "\n\n")
+		format("Material type:\n" + mat_class + "\n\n")
+		format("Assets with material:\n")
+		for each in mats do format(each.name + "\n")
+		format "-----------------------------\n"
+	)
+ )
+ 
