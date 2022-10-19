@@ -64,6 +64,10 @@ Removes all camera objects, regardless of groups, hierarchies or renderers.
 
 ![Remove all cameras](https://i.imgur.com/UWYTquv.gif)
 
+## Screenshots
+
+Takes screenshots (viewport and wireframe) and saves them to the directory in which the currenly opened Max file resides.
+
 
 **NOTE: The script was extensively tested with 3ds Max 2018. Older/newer versions might have missing features or bugs.**
 
