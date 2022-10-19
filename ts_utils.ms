@@ -93,3 +93,41 @@ macroScript remRaytrace category:"TurboSquid" toolTip:"Remove Raytrace maps" but
 	for raytinst in RaytraceMaps do
 		replaceInstances raytinst nullObject
 )
+
+macroScript screenshot category:"TurboSquid" toolTip:"Take screenshots" buttontext:"_SCRSHOT"
+(
+	if maxfilepath == "" then  
+		messageBox "Please save the file first"
+	else 
+	(
+		saveScreenshot ("Screenshot_viewport.png")
+		setEdgedFaces(true)
+		saveScreenshot ("Screenshot_wireframe.png")
+		setEdgedFaces(false)
+	)
+
+)
+
+function setEdgedFaces val = 
+(
+	for i = 1 to viewport.numViews do 
+	(
+		viewport.activeViewport = i
+		viewport.SetShowEdgeFaces (val)
+	)
+	redrawViews()
+)
+
+function saveScreenshot filename =
+(
+	grab_viewpBMP = gw.getViewportDib()
+	tempBMP = bitmap grab_viewpBMP.width grab_viewpBMP.height
+	pasteBitmap grab_viewpBMP tempBMP (box2 0 0 grab_viewpBMP.width grab_viewpBMP.height) [0,0] 
+	tempBMP.filename = (maxfilepath + filename)
+	save tempBMP
+	close tempBMP
+	close grab_viewpBMP
+	tempBMP = undefined
+	grab_viewpBMP = undefined
+	freeSceneBitmaps()
+)
