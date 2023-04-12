@@ -30,20 +30,14 @@ macroScript convertToEditPoly category:"TurboSquid" toolTip:"Convert all to Edit
 )
  
 macroScript removeLights category:"TurboSquid" toolTip:"Remove all lights" buttontext:"_RM_LGH"
-( 
-	for o in lights do 
-	(
-		delete o
-	)
+(
+	delete (for o in lights collect o)
 )
 
   
 macroScript removeCameras category:"TurboSquid" toolTip:"Remove all cameras" buttontext:"_RM_CAM"
 ( 
-	for o in cameras do 
-	(
-		delete o
-	)
+	delete (for o in cameras collect o)
 )
 
 
