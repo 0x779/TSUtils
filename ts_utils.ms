@@ -40,7 +40,11 @@ macroScript removeCameras category:"TurboSquid" toolTip:"Remove all cameras" but
 	delete (for o in cameras collect o)
 )
 
-
+macroScript removeBones category:"TurboSquid" toolTip:"Remove all bones" buttontext:"_RM_BONE"
+( 
+	delete (for o in objects where classOf o == Biped_Object OR classOf o == BoneGeometry OR (try(classOf o.transform.controller == BipSlave_Control)catch(false)) collect o)
+	
+)
  
 macroScript quadrifyObjects category:"TurboSquid" toolTip:"Quadrify Selected" buttontext:"_QUAD"
 ( 
